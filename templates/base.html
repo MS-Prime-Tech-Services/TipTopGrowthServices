@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TipTop Growth Services{% endblock %}</title>
+    
+    <!-- Bootstrap CSS (Replit Theme) -->
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    {% block head %}{% endblock %}
+</head>
+<body class="three-d-enabled {% block body_class %}{% endblock %}">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <i class="fab fa-tiktok me-2 animate-pulse"></i>TipTop Growth Services
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url_for('home') %}active fw-bold{% endif %}" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#order-form">Order Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url_for('contact') %}active fw-bold{% endif %}" href="{{ url_for('contact') }}">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url_for('privacy_policy') %}active fw-bold{% endif %}" href="{{ url_for('privacy_policy') }}">Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url_for('terms') %}active fw-bold{% endif %}" href="{{ url_for('terms') }}">Terms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url_for('refund_policy') %}active fw-bold{% endif %}" href="{{ url_for('refund_policy') }}">Refund</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url_for('disclaimer') %}active fw-bold{% endif %}" href="{{ url_for('disclaimer') }}">Disclaimer</a>
+                    </li>
+                </ul>
+                <!-- Social Media Links -->
+                <div class="d-flex ms-2">
+                    <a href="https://facebook.com/msprimetechservices" class="nav-link px-2" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/muhammadsaadlmk" class="nav-link px-2" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/tiptopgrowthservices" class="nav-link px-2" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://tiktok.com/@tiptopgrowthservices" class="nav-link px-2" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    <div class="container mt-3">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fab fa-tiktok me-2 text-primary"></i>TipTop Growth Services</h5>
+                    <p>Boost your TikTok presence with our premium growth services. Get real followers, likes, comments, and views.</p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="https://facebook.com/msprimetechservices" target="_blank" class="btn btn-sm btn-primary"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/muhammadsaadlmk" target="_blank" class="btn btn-sm btn-info"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/tiptopgrowthservices" target="_blank" class="btn btn-sm btn-danger"><i class="fab fa-instagram"></i></a>
+                        <a href="https://tiktok.com/@tiptopgrowthservices" target="_blank" class="btn btn-sm btn-dark"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('home') }}" class="text-decoration-none text-light">Home</a></li>
+                        <li><a href="#services" class="text-decoration-none text-light">Services</a></li>
+                        <li><a href="#pricing" class="text-decoration-none text-light">Pricing</a></li>
+                        <li><a href="#order-form" class="text-decoration-none text-light">Order Now</a></li>
+                        <li><a href="{{ url_for('contact') }}" class="text-decoration-none text-light">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('privacy_policy') }}" class="text-decoration-none text-light">Privacy Policy</a></li>
+                        <li><a href="{{ url_for('terms') }}" class="text-decoration-none text-light">Terms & Conditions</a></li>
+                        <li><a href="{{ url_for('refund_policy') }}" class="text-decoration-none text-light">Refund Policy</a></li>
+                        <li><a href="{{ url_for('disclaimer') }}" class="text-decoration-none text-light">Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2 text-primary"></i> tiptopgrowthservices@gmail.com</li>
+                        <li><i class="fab fa-whatsapp me-2 text-success"></i> +92 328 4336247</li>
+                        <li><i class="fab fa-instagram me-2 text-danger"></i> @tiptopgrowthservices</li>
+                        <li><i class="fas fa-map-marker-alt me-2 text-warning"></i> Lahore, Pakistan</li>
+                        <li class="mt-2"><a href="{{ url_for('contact') }}" class="btn btn-sm btn-outline-light"><i class="fas fa-paper-plane me-1"></i> Send Us a Message</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 TipTop Growth Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    <!-- Three.js Scene -->
+    <script src="{{ url_for('static', filename='js/three-scene.js') }}"></script>
+    
+    <!-- Debug JS removed -->
+    {% block scripts %}{% endblock %}
+</body>
+</html>

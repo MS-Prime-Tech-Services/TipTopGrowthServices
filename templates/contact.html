@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us - TipTop Growth Service{% endblock %}
+
+{% block body_class %}contact-page{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="h3 mb-0">Contact Us</h1>
+                    </div>
+                    <div class="card-body">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <div class="row">
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <div class="mb-4">
+                                    <h4 class="text-primary">Get In Touch</h4>
+                                    <p>Have questions about our services? Need help with an order? We're here to assist you!</p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5><i class="fas fa-map-marker-alt text-primary me-2"></i>Our Location</h5>
+                                    <p>Lahore, Pakistan</p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5><i class="fas fa-envelope text-primary me-2"></i>Email Us</h5>
+                                    <p><a href="mailto:tiptopgrowthservices@gmail.com" class="text-decoration-none">tiptopgrowthservices@gmail.com</a></p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5><i class="fab fa-whatsapp text-success me-2"></i>WhatsApp</h5>
+                                    <p><a href="https://wa.me/923284336247" class="text-decoration-none">+92 328 4336247</a></p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5><i class="fas fa-clock text-primary me-2"></i>Business Hours</h5>
+                                    <p>
+                                        Monday - Friday: 9:00 AM - 8:00 PM (PKT)<br>
+                                        Saturday: 10:00 AM - 6:00 PM (PKT)<br>
+                                        Sunday: Closed
+                                    </p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5><i class="fas fa-share-alt text-primary me-2"></i>Connect With Us</h5>
+                                    <div class="d-flex gap-2 mt-2">
+                                        <a href="https://facebook.com/msprimetechservices" target="_blank" class="btn btn-outline-primary"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="https://x.com/muhammadsaadlmk" target="_blank" class="btn btn-outline-info"><i class="fab fa-twitter"></i></a>
+                                        <a href="https://instagram.com/tiptopgrowthservices" target="_blank" class="btn btn-outline-danger"><i class="fab fa-instagram"></i></a>
+                                        <a href="https://tiktok.com/@tiptopgrowthservices" target="_blank" class="btn btn-outline-dark"><i class="fab fa-tiktok"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="text-primary mb-4">Send Us a Message</h4>
+                                <form action="{{ url_for('contact') }}" method="POST" class="contact-form">
+                                    <!-- We'll handle the submission in Flask -->
+                                    
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Your Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="subject_select" class="form-label">Subject <span class="text-danger">*</span></label>
+                                        <select class="form-select" id="subject_select" onchange="document.getElementById('subject').value = this.value" required>
+                                            <option value="" selected disabled>Select a subject</option>
+                                            <option value="Order Inquiry">Order Inquiry</option>
+                                            <option value="Service Question">Service Question</option>
+                                            <option value="Payment Issue">Payment Issue</option>
+                                            <option value="Feedback">Feedback</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        <input type="hidden" name="subject" id="subject">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label">Your Message <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                                    </div>
+                                    
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="privacy-check" required>
+                                        <label class="form-check-label" for="privacy-check">
+                                            I agree to the <a href="{{ url_for('privacy_policy') }}" target="_blank">Privacy Policy</a>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary">Send Message</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('home') }}" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% block scripts %}
+<script>
+    // Initialize subject field on load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up validation
+        var form = document.querySelector('.contact-form');
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                // Show loading indicator
+                var submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+                    submitBtn.disabled = true;
+                }
+                
+                // Copy the subject value if not done already
+                var subjectSelect = document.getElementById('subject_select');
+                var subjectField = document.getElementById('subject');
+                
+                if (subjectSelect.value && subjectField) {
+                    subjectField.value = subjectSelect.value;
+                }
+                
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    
+                    // Reset button if validation fails
+                    if (submitBtn) {
+                        submitBtn.innerHTML = 'Send Message';
+                        submitBtn.disabled = false;
+                    }
+                }
+                
+                // Form is valid, let the server handle it
+                // No need to prevent default as we want the form to submit normally
+            });
+        }
+        
+        // Set up subject select handler
+        var subjectSelect = document.getElementById('subject_select');
+        if (subjectSelect) {
+            subjectSelect.addEventListener('change', function() {
+                var subjectField = document.getElementById('subject');
+                if (subjectField) {
+                    subjectField.value = this.value;
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}
+{% endblock %}

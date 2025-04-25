@@ -1,0 +1,294 @@
+/* Custom Styles for TikTok Growth Services */
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 3D perspective for the entire page */
+body.three-d-enabled {
+    perspective: 1200px;
+    overflow-x: hidden;
+    background-color: #121212;
+}
+
+/* 3D transformations for elements */
+.card, .btn, .navbar, .form-control, footer, .alert {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/* Overall spacing adjustments */
+section {
+    padding: 60px 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Custom styling for hero section */
+.hero-section {
+    background: linear-gradient(to right, #121212, #1a1a1a);
+    padding: 100px 0;
+}
+
+/* Service cards hover effect */
+.card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom styling for icons */
+.fa-tiktok {
+    color: #00f2ea;
+}
+
+.fa-users {
+    color: #00f2ea;
+}
+
+.fa-heart {
+    color: #ff0050;
+}
+
+.fa-comment {
+    color: #00f2ea;
+}
+
+.fa-eye {
+    color: #25F4EE;
+}
+
+/* Order form section */
+#order-form {
+    background-color: #121212;
+}
+
+/* Remove hover movement animations for the form elements only (not buttons) */
+#order-form .form-control:hover,
+#order-form .form-select:hover,
+#order-form .input-group:hover,
+#order-form .card:hover,
+#order-form .accordion-item:hover,
+#order-form .form-check:hover,
+#order-form .input-group-text:hover {
+    transform: none !important;
+}
+
+/* Keep focus effects but without movement (except for buttons) */
+#order-form .form-control:focus,
+#order-form .form-select:focus {
+    transform: none !important;
+    box-shadow: 0 0 0 0.25rem rgba(0, 242, 234, 0.25);
+}
+
+/* Footer adjustments */
+footer {
+    margin-top: 0 !important;
+}
+
+/* Custom button style that matches TikTok brand */
+.btn-tiktok {
+    background-color: #ff0050;
+    border-color: #ff0050;
+    color: white;
+}
+
+.btn-tiktok:hover {
+    background-color: #e5004d;
+    border-color: #e5004d;
+    color: white;
+}
+
+/* Custom form focus styles */
+.form-control:focus,
+.form-select:focus {
+    border-color: #00f2ea;
+    box-shadow: 0 0 0 0.25rem rgba(0, 242, 234, 0.25);
+}
+
+/* TikTok themed focus ring for buttons */
+.btn-primary:focus,
+.btn-primary.focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 0, 80, 0.5);
+}
+
+/* Pricing table enhancements */
+.table-bordered {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Testimonial card styling */
+.testimonial-card {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Price calculator emphasis */
+#total-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #00f2ea;
+}
+
+/* 3D Animation Effects */
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 3D hover effects for buttons */
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px) rotateX(5deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 3D hover effects for cards */
+.card {
+    transition: all 0.4s ease;
+    transform-style: preserve-3d;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+}
+
+.card-footer {
+    border-bottom-left-radius: 16px !important;
+    border-bottom-right-radius: 16px !important;
+}
+
+/* 3D effect for form inputs */
+.form-control, .form-select {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+}
+
+.form-control:focus, .form-select:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 242, 234, 0.4);
+}
+
+/* Input validation styles */
+.form-control.is-valid, .form-select.is-valid {
+    border-color: #198754;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.form-control.is-invalid, .form-select.is-invalid {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.input-group-text.validation-icon.valid {
+    background-color: #198754;
+    border-color: #198754;
+    color: #fff;
+    display: flex;
+}
+
+.input-group-text.validation-icon.invalid {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+    display: flex;
+}
+
+/* Pulse animation for submit button */
+.pulse-animation {
+    animation: button-pulse 2s infinite;
+    position: relative;
+}
+
+@keyframes button-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(13, 110, 253, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+    }
+}
+
+/* Legal pages need no 3D effects */
+body.legal-page {
+    perspective: none;
+}
+
+body.legal-page .card {
+    transform: none !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+body.legal-page .card:hover {
+    transform: none !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Hide placeholder on focus */
+.placeholder-hide:focus::placeholder {
+    color: transparent;
+}
+
+/* Input field focus state */
+.placeholder-hide:focus {
+    border-color: #00f2ea;
+    box-shadow: 0 0 0 0.25rem rgba(0, 242, 234, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    section {
+        padding: 40px 0;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+}

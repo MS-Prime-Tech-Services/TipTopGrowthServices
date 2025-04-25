@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block title %}Terms and Conditions - TipTop Growth Service{% endblock %}
+
+{% block body_class %}legal-page{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="h3 mb-0">Terms and Conditions</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <p class="lead">Last Updated: April 22, 2025</p>
+                            <p>Please read these Terms and Conditions carefully before using the TipTop Growth Service website and services. By accessing or using our website and services, you agree to be bound by these Terms.</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-primary">1. Services</h4>
+                            <p>TipTop Growth Service offers social media enhancement services for TikTok, including followers, likes, comments, and views. These services are intended to boost your social media presence and engagement.</p>
+                            <p>We do not guarantee specific results or outcomes from our services. The effectiveness of our services may vary based on numerous factors beyond our control, including TikTok's algorithms and policies.</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-primary">2. User Responsibilities</h4>
+                            <p>By using our services, you agree to:</p>
+                            <ul>
+                                <li>Provide accurate and complete information when placing orders</li>
+                                <li>Use our services in compliance with TikTok's terms of service</li>
+                                <li>Use our services lawfully and for lawful purposes</li>
+                                <li>Make timely payments for services ordered</li>
+                                <li>Not use our services to distribute illegal, harmful, or offensive content</li>
+                                <li>Not attempt to manipulate or abuse our services or systems</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-primary">3. Payment and Pricing</h4>
+                            <p>All prices are listed in Pakistani Rupees (PKR). Payment must be made in advance before any services are delivered. We accept various payment methods as indicated on our website.</p>
+                            <p>We reserve the right to change our prices at any time. Any price changes will not affect orders that have already been confirmed.</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-primary">4. Service Delivery</h4>
+                            <p>We aim to begin processing your order within 24-48 hours after confirmation of payment. The time required to complete service delivery may vary depending on the type and volume of services ordered.</p>
+                            <p>We do not guarantee immediate or specific delivery timeframes. Delivery times are estimates only.</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-primary">5. Refunds and Cancellations</h4>
+                            <p>Please refer to our <a href="{{ url_for('refund_policy') }}">Refund Policy</a> for detailed information about refunds and cancellations.</p>
+                            <p>In general, due to the nature of our services, all sales are final. Refunds may be considered in specific circumstances at our discretion.</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-primary">6. Intellectual Property</h4>
+                            <p>All content on our website, including but not limited to text, graphics, logos, images, and software, is the property of TipTop Growth Service or our content suppliers and is protected by international copyright laws.</p>
+                            <p>You may not reproduce, distribute, display, or create derivative works from any content on our website without our express written permission.</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-primary">7. Limitation of Liability</h4>
+                            <p>In no event shall TipTop Growth Service, our directors, employees, partners, agents, suppliers, or affiliates be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:</p>
+                            <ul>
+                                <li>Your access to or use of or inability to access or use our services</li>
+                                <li>Any conduct or content of any third party on our services</li>
+                                <li>Any content obtained from our services</li>
+                                <li>Unauthorized access, use, or alteration of your transmissions or content</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-primary">8. Disclaimer of Warranties</h4>
+                            <p>Our services are provided "as is" and "as available" without any warranties of any kind, either express or implied. We do not warrant that our services will be uninterrupted, timely, secure, or error-free.</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-primary">9. Governing Law</h4>
+                            <p>These Terms shall be governed by and construed in accordance with the laws of Pakistan, without regard to its conflict of law provisions.</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-primary">10. Changes to Terms</h4>
+                            <p>We reserve the right to modify or replace these Terms at any time. It is your responsibility to review these Terms periodically for changes. By continuing to use our services after any changes to these Terms, you accept and agree to the revised Terms.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="text-primary">11. Contact Us</h4>
+                            <p>If you have any questions about these Terms, please contact us at:</p>
+                            <p>
+                                <strong>Email:</strong> tiptopgrowthservices@gmail.com<br>
+                                <strong>Phone:</strong> +92 328 4336247<br>
+                                <strong>Address:</strong> Lahore, Pakistan
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('home') }}" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

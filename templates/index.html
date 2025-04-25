@@ -1,0 +1,797 @@
+{% extends 'base.html' %}
+
+{% block title %}TipTop Growth Services - Boost Your TikTok Presence{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <h1 class="fw-bold"><i class="fab fa-tiktok me-2"></i>TipTop Growth Services</h1>
+            <p class="lead text-muted">Boost your TikTok profile with real followers, likes, comments, and views. Get noticed by the algorithm and grow your presence!</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="#order-form" class="btn btn-primary btn-lg px-4 gap-3">Order Now</a>
+                <a href="#services" class="btn btn-outline-secondary btn-lg px-4">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-5 bg-dark">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Services</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-users fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Followers</h5>
+                        <p class="card-text">Increase your follower count with real accounts to improve your social proof and credibility.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-heart fa-3x mb-3 text-danger"></i>
+                        <h5 class="card-title">Likes</h5>
+                        <p class="card-text">Get more likes on your videos to boost engagement and attract the TikTok algorithm.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-comment fa-3x mb-3 text-info"></i>
+                        <h5 class="card-title">Comments</h5>
+                        <p class="card-text">Increase engagement with random or custom comments to make your content more appealing.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-eye fa-3x mb-3 text-success"></i>
+                        <h5 class="card-title">Views</h5>
+                        <p class="card-text">Boost your video views to increase visibility and attract more organic engagement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Pricing</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Service</th>
+                        <th>Description</th>
+                        <th>Price (PKR)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Followers</td>
+                        <td>Real TikTok Followers</td>
+                        <td>PKR 1 per follower</td>
+                    </tr>
+                    <tr>
+                        <td>Likes</td>
+                        <td>Quick delivery within 24-48 hours</td>
+                        <td>PKR 0.3 per like</td>
+                    </tr>
+                    <tr>
+                        <td>Random Comments</td>
+                        <td>Generic positive comments</td>
+                        <td>PKR 0.4 per comment</td>
+                    </tr>
+                    <tr>
+                        <td>Custom Comments</td>
+                        <td>You specify the comment text</td>
+                        <td>PKR 0.8 per comment</td>
+                    </tr>
+                    <tr>
+                        <td>Random Views</td>
+                        <td>Random play duration</td>
+                        <td>PKR 0.5 per view</td>
+                    </tr>
+                    <tr>
+                        <td>Custom Watch Time</td>
+                        <td>Specific play duration</td>
+                        <td>PKR 0.8 per view</td>
+                    </tr>
+                    <tr>
+                        <td>Reposts</td>
+                        <td>Increase repost count on videos</td>
+                        <td>PKR 0.2 per repost</td>
+                    </tr>
+                    <tr>
+                        <td>Favorites</td>
+                        <td>Increase favorite count on videos</td>
+                        <td>PKR 0.2 per favorite</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Order Form Section -->
+<section id="order-form" class="py-5 bg-light" data-bs-theme="dark">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">Order TikTok Services</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="tiktok-service-form" action="{{ url_for('submit') }}" method="POST">
+                            <!-- Personal Information Section -->
+                            <h5 class="mb-3">Personal Information</h5>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="customer_name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control rounded-3" id="customer_name" name="customer_name" placeholder="Enter your full name" required>
+                                    <div class="form-text">Enter your full name as it appears on your payment account</div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="customer_email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control rounded-3" id="customer_email" name="customer_email" placeholder="Enter your email address" required>
+                                    <div class="form-text">We'll use this to send you order updates</div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="customer_phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control rounded-3" id="customer_phone" name="customer_phone" placeholder="e.g., +92 3XX XXXXXXX" required>
+                                    <div class="form-text">Enter your contact phone number</div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="customer_whatsapp" class="form-label">WhatsApp Number <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control rounded-3" id="customer_whatsapp" name="customer_whatsapp" placeholder="e.g., +92 3XX XXXXXXX" required>
+                                    <div class="form-text">Enter your WhatsApp number for order updates</div>
+                                </div>
+                            </div>
+
+                            <h5 class="mt-4 mb-3">TikTok Service Details</h5>
+                            <div class="mb-3">
+                                <label for="profile_link" class="form-label">TikTok Profile Link <span class="text-danger">*</span></label>
+                                <div class="input-group has-validation">
+                                    <input type="url" class="form-control rounded-3" id="profile_link" name="profile_link" placeholder="https://www.tiktok.com/@username" required>
+                                    <span class="input-group-text validation-icon" id="profile-validation-icon" style="display:none;"></span>
+                                </div>
+                                <div class="invalid-feedback" id="profile-feedback">
+                                    Please enter a valid TikTok profile URL (https://www.tiktok.com/@username)
+                                </div>
+                                <div class="form-text">Enter your TikTok profile URL</div>
+                            </div>
+                            
+                            <h5 class="mt-4">Select Services</h5>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="followers" class="form-label">Followers</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control placeholder-hide" id="followers" name="followers" placeholder="Enter number of followers" value="">
+                                        <span class="input-group-text">PKR 1 each</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="likes" class="form-label">Likes</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control placeholder-hide" id="likes" name="likes" placeholder="Enter number of likes" value="">
+                                        <span class="input-group-text">PKR 0.3 each</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="comments" class="form-label">Comments</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control placeholder-hide" id="comments" name="comments" placeholder="Enter number of comments" value="">
+                                        <select class="form-select" id="comment_type" name="comment_type">
+                                            <option value="random">Random (PKR 0.4 each)</option>
+                                            <option value="custom">Custom (PKR 0.8 each)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6" id="custom_comment_container" style="display: none;">
+                                    <label for="custom_comment" class="form-label">Custom Comment Text</label>
+                                    <textarea class="form-control placeholder-hide" id="custom_comment" name="custom_comment" rows="2" placeholder="Enter your custom comment"></textarea>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="views" class="form-label">Views</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control placeholder-hide" id="views" name="views" placeholder="Enter number of views" value="">
+                                        <select class="form-select" id="watch_time" name="watch_time">
+                                            <option value="random">Random Play (PKR 0.5 each)</option>
+                                            <option value="custom">Custom Time (PKR 0.8 each)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6" id="custom_time_container" style="display: none;">
+                                    <label for="custom_time" class="form-label">Custom Watch Time (seconds)</label>
+                                    <input type="number" class="form-control placeholder-hide" id="custom_time" name="custom_time" placeholder="Enter duration in seconds" value="">
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="reposts" class="form-label">Reposts</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control placeholder-hide" id="reposts" name="reposts" placeholder="Enter number of reposts" value="">
+                                        <span class="input-group-text">PKR 0.2 each</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="favorites" class="form-label">Favorites</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control placeholder-hide" id="favorites" name="favorites" placeholder="Enter number of favorites" value="">
+                                        <span class="input-group-text">PKR 0.2 each</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h5 class="mt-4">Delivery Options</h5>
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="delivery_option" class="form-label">Select Delivery Speed <span class="text-danger">*</span></label>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="delivery_option" id="random_delivery" value="random" checked>
+                                            <label class="form-check-label" for="random_delivery">
+                                                <strong>Standard Delivery</strong> (24-48 hours) - No additional charges
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="delivery_option" id="fast_delivery" value="fast">
+                                            <label class="form-check-label" for="fast_delivery">
+                                                <strong>Express Delivery</strong> (6-12 hours) - Additional PKR 500
+                                            </label>
+                                            <small class="text-warning d-block mt-1">Note: Coupon discounts do not apply to express delivery charges</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card mt-4 mb-4 bg-secondary">
+                                <div class="card-body">
+                                    <!-- Coupon code input field -->
+                                    <div class="mb-3">
+                                        <label for="coupon_code" class="form-label">Coupon Code</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="coupon_code" name="coupon_code" placeholder="Enter coupon code">
+                                            <button class="btn btn-primary" type="button" id="apply-coupon">Apply</button>
+                                        </div>
+                                        <div id="coupon-message" class="form-text"></div>
+                                    </div>
+                                    
+                                    <!-- Regular price information always shown -->
+                                    <h5 class="mb-2">Regular Price: <span id="total-price" class="text-info fw-bold">PKR 0.00</span></h5>
+                                    
+                                    <!-- Discounted price (shown only when coupon applied) -->
+                                    <div id="discount-container" style="display: none;">
+                                        <h5 class="mb-2">
+                                            Discount: <span id="discount-amount" class="text-warning fw-bold">30%</span>
+                                            <span id="discount-value" class="text-warning">(PKR 0.00)</span>
+                                        </h5>
+                                        <h5 class="mb-2">Discounted Price: <span id="discounted-price" class="text-success fw-bold">PKR 0.00</span></h5>
+                                    </div>
+                                    
+                                    <h6 class="mb-2">You'll Pay: <span id="rounded-price" class="text-success fw-bold">PKR 0</span> (rounded up)</h6>
+                                    
+                                    <small class="text-muted mt-2 d-block">Prices are calculated based on your selections</small>
+                                    
+                                    <!-- Hidden fields to pass price data with the main form -->
+                                    <input type="hidden" id="original_price" name="original_price" value="0">
+                                    <input type="hidden" id="original_rounded_price" name="original_rounded_price" value="0">
+                                    <input type="hidden" id="discount" name="discount" value="0">
+                                    <input type="hidden" id="discounted_price" name="discounted_price" value="0">
+                                    <input type="hidden" id="discounted_rounded_price" name="discounted_rounded_price" value="0">
+                                </div>
+                            </div>
+                            
+                            <!-- Payment Information -->
+                            <div class="card mt-4 mb-4">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0">Payment Information</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-2">Please transfer the payment to one of the following accounts:</p>
+                                    
+                                    <div class="accordion" id="paymentAccordion">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#jazzCash" aria-expanded="true" aria-controls="jazzCash">
+                                                    <i class="fas fa-wallet me-2"></i> JazzCash
+                                                </button>
+                                            </h2>
+                                            <div id="jazzCash" class="accordion-collapse collapse show" data-bs-parent="#paymentAccordion">
+                                                <div class="accordion-body">
+                                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div>
+                                                            <strong>Account Number:</strong> 03284336247<br>
+                                                            <strong>Account Holder:</strong> Muhammad Saad
+                                                        </div>
+                                                        <button type="button" class="btn btn-sm btn-outline-primary copy-btn" data-clipboard="03284336247">
+                                                            <i class="fas fa-copy"></i> Copy
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nayapay" aria-expanded="false" aria-controls="nayapay">
+                                                    <i class="fas fa-mobile-alt me-2"></i> NayaPay
+                                                </button>
+                                            </h2>
+                                            <div id="nayapay" class="accordion-collapse collapse" data-bs-parent="#paymentAccordion">
+                                                <div class="accordion-body">
+                                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div>
+                                                            <strong>Account Number:</strong> 03284336247<br>
+                                                            <strong>Account Holder:</strong> Muhammad Saad
+                                                        </div>
+                                                        <button type="button" class="btn btn-sm btn-outline-primary copy-btn" data-clipboard="03284336247">
+                                                            <i class="fas fa-copy"></i> Copy
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#meezanBank" aria-expanded="false" aria-controls="meezanBank">
+                                                    <i class="fas fa-university me-2"></i> Meezan Bank
+                                                </button>
+                                            </h2>
+                                            <div id="meezanBank" class="accordion-collapse collapse" data-bs-parent="#paymentAccordion">
+                                                <div class="accordion-body">
+                                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div>
+                                                            <strong>Account Number:</strong> 02770110529460<br>
+                                                            <strong>Account Holder:</strong> Muhammad Saad
+                                                        </div>
+                                                        <button type="button" class="btn btn-sm btn-outline-primary copy-btn" data-clipboard="02770110529460">
+                                                            <i class="fas fa-copy"></i> Copy
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="payment_method" class="form-label">Payment Method Used <span class="text-danger">*</span></label>
+                                        <select class="form-select rounded-3" id="payment_method" name="payment_method" required>
+                                            <option value="" selected disabled>Select payment method</option>
+                                            <option value="jazzcash">JazzCash</option>
+                                            <option value="nayapay">NayaPay</option>
+                                            <option value="meezan">Meezan Bank</option>
+                                        </select>
+                                        <div class="form-text">Select the payment method you used</div>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <label for="transaction_id" class="form-label">Transaction ID / Reference Number <span class="text-danger">*</span></label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control rounded-3" id="transaction_id" name="transaction_id" placeholder="Enter your payment transaction ID or reference number" required>
+                                            <span class="input-group-text validation-icon" id="transaction-validation-icon" style="display:none;"></span>
+                                        </div>
+                                        <div class="invalid-feedback" id="transaction-feedback">
+                                            Please enter your payment transaction ID or reference number
+                                        </div>
+                                        <div class="form-text">Enter the transaction ID after making payment</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="agreementCheck" required>
+                                <label class="form-check-label" for="agreementCheck">
+                                    I agree to send payment screenshot to WhatsApp number +92 328 4336247 after submitting this order
+                                </label>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg pulse-animation">Place Order</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">What Our Customers Say</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="card-text">"I was struggling to grow my TikTok account until I found this service. Within a week, my engagement skyrocketed and I started getting noticed!"</p>
+                        <div class="d-flex align-items-center">
+                            <div class="ms-3">
+                                <h6 class="mb-0">Daniyal Shah</h6>
+                                <small class="text-muted">Dance Creator</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <p class="card-text">"The service was prompt and effective. My videos started getting more views almost immediately, and the followers I gained have been consistently engaging with my content."</p>
+                        <div class="d-flex align-items-center">
+                            <div class="ms-3">
+                                <h6 class="mb-0">Arsalan Imran</h6>
+                                <small class="text-muted">Comedy Content Creator</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="card-text">"As a small business owner, I needed to build my TikTok presence quickly. This service helped me establish credibility and reach more potential customers."</p>
+                        <div class="d-flex align-items-center">
+                            <div class="ms-3">
+                                <h6 class="mb-0">Mahvish Punam</h6>
+                                <small class="text-muted">Business Owner</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Form validation for TikTok profile link
+        const profileLinkInput = document.getElementById('profile_link');
+        const profileValidationIcon = document.getElementById('profile-validation-icon');
+        const transactionIdInput = document.getElementById('transaction_id');
+        const transactionValidationIcon = document.getElementById('transaction-validation-icon');
+        const form = document.getElementById('tiktok-service-form');
+        
+        // Validate TikTok profile link
+        profileLinkInput.addEventListener('input', function() {
+            validateTikTokLink(this);
+        });
+        
+        profileLinkInput.addEventListener('blur', function() {
+            validateTikTokLink(this);
+        });
+        
+        // Validate transaction ID
+        transactionIdInput.addEventListener('input', function() {
+            validateTransactionId(this);
+        });
+        
+        transactionIdInput.addEventListener('blur', function() {
+            validateTransactionId(this);
+        });
+        
+        // Form submission validation
+        form.addEventListener('submit', function(event) {
+            let isValid = true;
+            
+            // Validate TikTok link
+            if (!validateTikTokLink(profileLinkInput)) {
+                isValid = false;
+            }
+            
+            // Validate transaction ID
+            if (!validateTransactionId(transactionIdInput)) {
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                event.preventDefault();
+                // Scroll to the first invalid element
+                const firstInvalidElement = document.querySelector('.is-invalid');
+                if (firstInvalidElement) {
+                    firstInvalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+        
+        // Function to validate TikTok link
+        function validateTikTokLink(input) {
+            const value = input.value.trim();
+            const isValid = value !== '' && (value.startsWith('https://www.tiktok.com/') || value.startsWith('https://tiktok.com/'));
+            
+            if (isValid) {
+                input.classList.add('is-valid');
+                input.classList.remove('is-invalid');
+                profileValidationIcon.style.display = 'flex';
+                profileValidationIcon.innerHTML = '<i class="fas fa-check"></i>';
+                profileValidationIcon.classList.add('valid');
+                profileValidationIcon.classList.remove('invalid');
+            } else if (value !== '') {
+                input.classList.add('is-invalid');
+                input.classList.remove('is-valid');
+                profileValidationIcon.style.display = 'flex';
+                profileValidationIcon.innerHTML = '<i class="fas fa-times"></i>';
+                profileValidationIcon.classList.add('invalid');
+                profileValidationIcon.classList.remove('valid');
+            } else {
+                input.classList.remove('is-valid', 'is-invalid');
+                profileValidationIcon.style.display = 'none';
+            }
+            
+            return isValid;
+        }
+        
+        // Function to validate transaction ID
+        function validateTransactionId(input) {
+            const value = input.value.trim();
+            const isValid = value.length >= 3; // At least 3 characters for a transaction ID
+            
+            if (isValid) {
+                input.classList.add('is-valid');
+                input.classList.remove('is-invalid');
+                transactionValidationIcon.style.display = 'flex';
+                transactionValidationIcon.innerHTML = '<i class="fas fa-check"></i>';
+                transactionValidationIcon.classList.add('valid');
+                transactionValidationIcon.classList.remove('invalid');
+            } else if (value !== '') {
+                input.classList.add('is-invalid');
+                input.classList.remove('is-valid');
+                transactionValidationIcon.style.display = 'flex';
+                transactionValidationIcon.innerHTML = '<i class="fas fa-times"></i>';
+                transactionValidationIcon.classList.add('invalid');
+                transactionValidationIcon.classList.remove('valid');
+            } else {
+                input.classList.remove('is-valid', 'is-invalid');
+                transactionValidationIcon.style.display = 'none';
+            }
+            
+            return isValid;
+        }
+        
+        // Show/hide custom comment field
+        const commentTypeSelect = document.getElementById('comment_type');
+        const customCommentContainer = document.getElementById('custom_comment_container');
+        const watchTimeSelect = document.getElementById('watch_time');
+        const customTimeContainer = document.getElementById('custom_time_container');
+        const commentsInput = document.getElementById('comments');
+        
+        // Update placeholder based on comment type
+        commentTypeSelect.addEventListener('change', function() {
+            if (this.value === 'custom') {
+                customCommentContainer.style.display = 'block';
+                commentsInput.placeholder = "Enter number of comments";
+            } else {
+                customCommentContainer.style.display = 'none';
+                commentsInput.placeholder = "Enter number of comments";
+            }
+            calculatePrice();
+        });
+        
+        // Show/hide custom time field
+        watchTimeSelect.addEventListener('change', function() {
+            if (this.value === 'custom') {
+                customTimeContainer.style.display = 'block';
+            } else {
+                customTimeContainer.style.display = 'none';
+            }
+            calculatePrice();
+        });
+        
+        // Calculate price based on inputs
+        const followersInput = document.getElementById('followers');
+        const likesInput = document.getElementById('likes');
+        // commentsInput already declared above
+        const viewsInput = document.getElementById('views');
+        // watchTimeSelect already declared above
+        const totalPriceElement = document.getElementById('total-price');
+        const roundedPriceElement = document.getElementById('rounded-price');
+        
+        const inputs = [followersInput, likesInput, commentsInput, viewsInput];
+        const selects = [commentTypeSelect, watchTimeSelect];
+        
+        // Add event listeners to all inputs and selects
+        inputs.forEach(input => {
+            input.addEventListener('input', calculatePrice);
+        });
+        
+        selects.forEach(select => {
+            select.addEventListener('change', calculatePrice);
+        });
+        
+        // Function to calculate price
+        function calculatePrice() {
+            let price = 0;
+            
+            // Followers
+            const followers = parseInt(followersInput.value) || 0;
+            if (followers > 0) {
+                // No min/max limits
+                price += followers * 1; // PKR 1 per follower
+            }
+            
+            // Likes
+            const likes = parseInt(likesInput.value) || 0;
+            // No minimum limit
+            price += likes * 0.2; // PKR 0.2 per like
+            
+            // Comments
+            const comments = parseInt(commentsInput.value) || 0;
+            // No minimum limit
+            
+            if (commentTypeSelect.value === 'random') {
+                price += comments * 0.4; // PKR 0.4 per random comment
+            } else {
+                // Custom comments - no minimum
+                price += comments * 1; // PKR 1 per custom comment
+            }
+            
+            // Views
+            const views = parseInt(viewsInput.value) || 0;
+            // No minimum limit
+            
+            price += views * 0.5; // PKR 0.5 per random view
+            if (watchTimeSelect.value === 'custom') {
+                price += views * 1; // Additional PKR 1 for custom time (total PKR 1.5 per view)
+            }
+            
+            // Re-read values after possible adjustments
+            const updatedFollowers = parseInt(followersInput.value) || 0;
+            const updatedLikes = parseInt(likesInput.value) || 0;
+            const updatedComments = parseInt(commentsInput.value) || 0;
+            const updatedViews = parseInt(viewsInput.value) || 0;
+            
+            // Calculate final price
+            let finalPrice = 0;
+            finalPrice += updatedFollowers * 1;
+            finalPrice += updatedLikes * 0.2;
+            
+            if (commentTypeSelect.value === 'random') {
+                finalPrice += updatedComments * 0.4;
+            } else {
+                finalPrice += updatedComments * 1;
+            }
+            
+            finalPrice += updatedViews * 0.5;
+            if (watchTimeSelect.value === 'custom') {
+                finalPrice += updatedViews * 1;
+            }
+            
+            // Calculate rounded price (same logic as backend)
+            // Round up to next integer (ceiling function)
+            // For example: 1.1 → 2, 2.3 → 3, etc.
+            const roundedPrice = Math.floor(finalPrice) + (finalPrice > Math.floor(finalPrice) ? 1 : 0);
+            
+            // Update the price displays
+            totalPriceElement.textContent = `PKR ${finalPrice.toFixed(2)}`;
+            roundedPriceElement.textContent = `PKR ${roundedPrice}`;
+        }
+        
+        // Initial calculation
+        calculatePrice();
+        
+        // Add direct event listeners for both price displays
+        const priceInputs = document.querySelectorAll('#followers, #likes, #comments, #views');
+        const priceSelects = document.querySelectorAll('#comment_type, #watch_time');
+        
+        function updateBothPrices() {
+            // Simple direct calculation
+            const followers = parseInt(document.getElementById('followers').value) || 0;
+            const likes = parseInt(document.getElementById('likes').value) || 0;
+            const comments = parseInt(document.getElementById('comments').value) || 0;
+            const commentType = document.getElementById('comment_type').value;
+            const views = parseInt(document.getElementById('views').value) || 0;
+            const watchTime = document.getElementById('watch_time').value;
+            
+            let price = followers * 1; // PKR 1 per follower
+            price += likes * 0.2; // PKR 0.2 per like
+            
+            // Comments pricing
+            if (commentType === 'random') {
+                price += comments * 0.4; // PKR 0.4 per random comment
+            } else {
+                price += comments * 1; // PKR 1 per custom comment
+            }
+            
+            // Views pricing
+            price += views * 0.5; // PKR 0.5 per view
+            if (watchTime === 'custom') {
+                price += views * 1; // Additional PKR 1 for custom time
+            }
+            
+            // Round to 2 decimal places
+            const exactPrice = price.toFixed(2);
+            // Calculate rounded price: ceiling function
+            const roundedPrice = Math.floor(price) + (price > Math.floor(price) ? 1 : 0);
+            
+            // Update both displays
+            document.getElementById('total-price').textContent = `PKR ${exactPrice}`;
+            document.getElementById('rounded-price').textContent = `PKR ${roundedPrice}`;
+            
+            console.log("Price updated:", exactPrice, roundedPrice);
+        }
+        
+        // Add event listeners to all price-affecting inputs
+        priceInputs.forEach(input => input.addEventListener('input', updateBothPrices));
+        priceSelects.forEach(select => select.addEventListener('change', updateBothPrices));
+        
+        // Run it once on page load to initialize
+        updateBothPrices();
+        
+        // Copy to clipboard functionality for account numbers
+        const copyButtons = document.querySelectorAll('.copy-btn');
+        copyButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const textToCopy = this.getAttribute('data-clipboard');
+                navigator.clipboard.writeText(textToCopy)
+                    .then(() => {
+                        // Change button text temporarily to show success
+                        const originalHTML = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        this.classList.remove('btn-outline-primary');
+                        this.classList.add('btn-success');
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalHTML;
+                            this.classList.remove('btn-success');
+                            this.classList.add('btn-outline-primary');
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        console.error('Could not copy text: ', err);
+                        alert('Failed to copy. Please try again.');
+                    });
+            });
+        });
+    });
+</script>
+{% endblock %}

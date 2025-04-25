@@ -1,0 +1,417 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Confirmation - TipTop Growth Services{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm border-success">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="mb-0"><i class="fas fa-check-circle me-2"></i>Order Received Successfully!</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-thumbs-up fa-4x text-success mb-3"></i>
+                            <h4>Thank you for your order!</h4>
+                            <p class="lead">We've received your request and will start processing it soon.</p>
+                        </div>
+                        
+                        <h5 class="border-bottom pb-2">Customer Information</h5>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Name:</th>
+                                        <td>{{ customer_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email:</th>
+                                        <td>{{ customer_email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone:</th>
+                                        <td>{{ customer_phone }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>WhatsApp:</th>
+                                        <td>{{ customer_whatsapp }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h5 class="border-bottom pb-2 mt-4">Order Details</h5>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>TikTok Profile Link:</th>
+                                        <td><a href="{{ profile_link }}" target="_blank">{{ profile_link }}</a></td>
+                                    </tr>
+                                    {% if followers > 0 %}
+                                    <tr>
+                                        <th>Followers:</th>
+                                        <td>{{ followers }} (PKR {{ followers * 1 }})</td>
+                                    </tr>
+                                    {% endif %}
+                                    
+                                    {% if likes > 0 %}
+                                    <tr>
+                                        <th>Likes:</th>
+                                        <td>{{ likes }} (PKR {{ (likes * 0.3)|round(2) }})</td>
+                                    </tr>
+                                    {% endif %}
+                                    
+                                    {% if comments > 0 %}
+                                    <tr>
+                                        <th>Comments:</th>
+                                        <td>
+                                            {{ comments }} {{ comment_type }} comments
+                                            {% if comment_type == 'random' %}
+                                                (PKR {{ (comments * 0.4)|round(2) }})
+                                            {% else %}
+                                                (PKR {{ (comments * 0.8)|round(2) }})
+                                                {% if custom_comment %}
+                                                <br>
+                                                <small class="text-muted">Comment text: "{{ custom_comment }}"</small>
+                                                {% endif %}
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                    
+                                    {% if reposts > 0 %}
+                                    <tr>
+                                        <th>Reposts:</th>
+                                        <td>{{ reposts }} (PKR {{ (reposts * 0.2)|round(2) }})</td>
+                                    </tr>
+                                    {% endif %}
+                                    
+                                    {% if favorites > 0 %}
+                                    <tr>
+                                        <th>Favorites:</th>
+                                        <td>{{ favorites }} (PKR {{ (favorites * 0.2)|round(2) }})</td>
+                                    </tr>
+                                    {% endif %}
+                                    
+                                    {% if views > 0 %}
+                                    <tr>
+                                        <th>Views:</th>
+                                        <td>
+                                            {{ views }} {{ watch_time }} play views
+                                            {% if watch_time == 'random' %}
+                                                (PKR {{ (views * 0.5)|round(2) }})
+                                            {% else %}
+                                                (PKR {{ (views * 1.3)|round(2) }})  <!-- 0.5 for views + 0.8 for custom time -->
+                                                {% if custom_time > 0 %}
+                                                <br>
+                                                <small class="text-muted">Custom time: {{ custom_time }} seconds</small>
+                                                {% endif %}
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                    
+                                    <tr>
+                                        <th>Delivery Option:</th>
+                                        <td>
+                                            {% if delivery_option == 'fast' %}
+                                                <span class="badge bg-warning">Express Delivery (6-12 hours)</span>
+                                                <span class="ms-2">+PKR 500</span>
+                                            {% else %}
+                                                <span class="badge bg-secondary">Standard Delivery (24-48 hours)</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <th>Payment Method:</th>
+                                        <td>{{ payment_method|capitalize }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Transaction ID:</th>
+                                        <td>{{ transaction_id }}</td>
+                                    </tr>
+                                    <tr class="table-active">
+                                        <th>{{ 'After Coupon' if discount > 0 else 'Total Price' }}:</th>
+                                        <td class="fw-bold">
+                                            <span class="text-success fw-bold">PKR {{ rounded_price }}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="alert alert-warning mt-4">
+                            <h5><i class="fas fa-exclamation-triangle me-2"></i>IMPORTANT!</h5>
+                            <p><strong>Please send a screenshot of your transaction to our WhatsApp number: +92 328 4336247</strong></p>
+                            <p>Your order will NOT be processed until we receive your payment confirmation screenshot.</p>
+                        </div>
+                        
+                        <div class="alert alert-info mt-4">
+                            <h5><i class="fas fa-info-circle me-2"></i>What's Next?</h5>
+                            <p>Our team will review your order and you'll start seeing results 
+                            {% if delivery_option == 'fast' %}
+                            within <strong>6-12 hours</strong>
+                            {% else %}
+                            within <strong>24-48 hours</strong>
+                            {% endif %}
+                            after we verify your payment.</p>
+                        </div>
+                        
+                        <div class="d-grid gap-2 mt-4">
+                            <a href="https://wa.me/923284336247?text=Hello,%20my%20name%20is%20{{ customer_name }}%20and%20I%20just%20placed%20an%20order%20for%20TipTop%20Growth%20Services%20with%20transaction%20ID:%20{{ transaction_id }}" class="btn btn-success" target="_blank">
+                                <i class="fab fa-whatsapp me-2"></i>Send Payment Proof on WhatsApp
+                            </a>
+                            <button id="save-as-image" class="btn btn-info">
+                                <i class="fas fa-file-pdf me-2"></i>Download Order Receipt
+                            </button>
+                            <a href="{{ url_for('home') }}" class="btn btn-primary">Place Another Order</a>
+                        </div>
+                        
+                        <!-- Add html2canvas library -->
+                        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+                        
+                        <!-- Add jsPDF library -->
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+                        
+                        <!-- Script to save the receipt as a PDF with only essential details -->
+                        <script>
+                            document.getElementById('save-as-image').addEventListener('click', function() {
+                                // Show a loading message
+                                const btn = this;
+                                const originalText = btn.innerHTML;
+                                btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Generating PDF...';
+                                btn.disabled = true;
+                                
+                                try {
+                                    // Create a new PDF using jsPDF
+                                    const { jsPDF } = window.jspdf;
+                                    const pdf = new jsPDF({
+                                        orientation: 'portrait',
+                                        unit: 'mm',
+                                        format: 'a4',
+                                    });
+                                    
+                                    // PDF dimensions
+                                    const pageWidth = 210; // A4 width in mm
+                                    const margin = 20;
+                                    const contentWidth = pageWidth - (margin * 2);
+                                    let yPos = 20;
+                                    
+                                    // Add header
+                                    pdf.setFillColor(75, 181, 67); // Success green background
+                                    pdf.rect(0, 0, pageWidth, 15, 'F');
+                                    pdf.setTextColor(255, 255, 255); // White text
+                                    pdf.setFontSize(14);
+                                    pdf.text('Order Received Successfully!', margin, 10);
+                                    
+                                    // Reset text color to black for content
+                                    pdf.setTextColor(0, 0, 0);
+                                    
+                                    // Add success icon and thank you message
+                                    pdf.setFontSize(14);
+                                    pdf.text('Thank you for your order!', pageWidth/2, yPos + 10, { align: 'center' });
+                                    pdf.setFontSize(10);
+                                    pdf.text("We've received your request and will start processing it soon.", pageWidth/2, yPos + 18, { align: 'center' });
+                                    
+                                    yPos += 30;
+                                    
+                                    // Customer Information
+                                    pdf.setFontSize(12);
+                                    pdf.setFont(undefined, 'bold');
+                                    pdf.text('Customer Information', margin, yPos);
+                                    pdf.line(margin, yPos + 2, pageWidth - margin, yPos + 2); // Underline
+                                    pdf.setFont(undefined, 'normal');
+                                    
+                                    yPos += 10;
+                                    pdf.setFontSize(10);
+                                    pdf.text('Name:', margin, yPos);
+                                    pdf.text('{{ customer_name }}', margin + 40, yPos);
+                                    
+                                    yPos += 7;
+                                    pdf.text('Email:', margin, yPos);
+                                    pdf.text('{{ customer_email }}', margin + 40, yPos);
+                                    
+                                    yPos += 7;
+                                    pdf.text('Phone:', margin, yPos);
+                                    pdf.text('{{ customer_phone }}', margin + 40, yPos);
+                                    
+                                    yPos += 7;
+                                    pdf.text('WhatsApp:', margin, yPos);
+                                    pdf.text('{{ customer_whatsapp }}', margin + 40, yPos);
+                                    
+                                    yPos += 15;
+                                    
+                                    // Order Details
+                                    pdf.setFontSize(12);
+                                    pdf.setFont(undefined, 'bold');
+                                    pdf.text('Order Details', margin, yPos);
+                                    pdf.line(margin, yPos + 2, pageWidth - margin, yPos + 2); // Underline
+                                    pdf.setFont(undefined, 'normal');
+                                    
+                                    yPos += 10;
+                                    pdf.setFontSize(10);
+                                    pdf.text('TikTok Profile Link:', margin, yPos);
+                                    pdf.text('{{ profile_link }}', margin + 40, yPos);
+                                    
+                                    {% if followers > 0 %}
+                                    yPos += 7;
+                                    pdf.text('Followers:', margin, yPos);
+                                    pdf.text('{{ followers }} (PKR {{ followers * 1 }})', margin + 40, yPos);
+                                    {% endif %}
+                                    
+                                    {% if likes > 0 %}
+                                    yPos += 7;
+                                    pdf.text('Likes:', margin, yPos);
+                                    pdf.text('{{ likes }} (PKR {{ (likes * 0.3)|round(2) }})', margin + 40, yPos);
+                                    {% endif %}
+                                    
+                                    {% if comments > 0 %}
+                                    yPos += 7;
+                                    pdf.text('Comments:', margin, yPos);
+                                    {% if comment_type == 'random' %}
+                                    pdf.text('{{ comments }} random comments (PKR {{ (comments * 0.4)|round(2) }})', margin + 40, yPos);
+                                    {% else %}
+                                    pdf.text('{{ comments }} custom comments (PKR {{ (comments * 0.8)|round(2) }})', margin + 40, yPos);
+                                    {% endif %}
+                                    {% endif %}
+                                    
+                                    {% if reposts > 0 %}
+                                    yPos += 7;
+                                    pdf.text('Reposts:', margin, yPos);
+                                    pdf.text('{{ reposts }} (PKR {{ (reposts * 0.2)|round(2) }})', margin + 40, yPos);
+                                    {% endif %}
+                                    
+                                    {% if favorites > 0 %}
+                                    yPos += 7;
+                                    pdf.text('Favorites:', margin, yPos);
+                                    pdf.text('{{ favorites }} (PKR {{ (favorites * 0.2)|round(2) }})', margin + 40, yPos);
+                                    {% endif %}
+                                    
+                                    {% if views > 0 %}
+                                    yPos += 7;
+                                    pdf.text('Views:', margin, yPos);
+                                    {% if watch_time == 'random' %}
+                                    pdf.text('{{ views }} random play views (PKR {{ (views * 0.5)|round(2) }})', margin + 40, yPos);
+                                    {% else %}
+                                    pdf.text('{{ views }} custom time views (PKR {{ (views * 1.3)|round(2) }})', margin + 40, yPos);
+                                    {% endif %}
+                                    {% endif %}
+                                    
+                                    yPos += 7;
+                                    pdf.text('Delivery Option:', margin, yPos);
+                                    {% if delivery_option == 'fast' %}
+                                    pdf.text('Express Delivery (6-12 hours) +PKR 500', margin + 40, yPos);
+                                    {% else %}
+                                    pdf.text('Standard Delivery (24-48 hours)', margin + 40, yPos);
+                                    {% endif %}
+                                    
+                                    yPos += 7;
+                                    pdf.text('Payment Method:', margin, yPos);
+                                    pdf.text('{{ payment_method|capitalize }}', margin + 40, yPos);
+                                    
+                                    yPos += 7;
+                                    pdf.text('Transaction ID:', margin, yPos);
+                                    pdf.text('{{ transaction_id }}', margin + 40, yPos);
+                                    
+                                    {% if discount > 0 and coupon_code %}
+                                    // Add coupon information
+                                    yPos += 7;
+                                    pdf.setTextColor(255, 140, 0); // Orange color for coupon
+                                    pdf.setFont(undefined, 'bold');
+                                    pdf.text('Coupon Applied:', margin, yPos);
+                                    pdf.text('{{ coupon_code }} ({{ discount }}% off)', margin + 40, yPos);
+                                    pdf.setTextColor(0, 0, 0); // Back to black
+                                    pdf.setFont(undefined, 'normal');
+                                    {% endif %}
+                                    
+                                    // Total Price (more prominent)
+                                    yPos += 12;
+                                    pdf.setFillColor(240, 240, 240); // Light gray background
+                                    pdf.rect(margin, yPos - 5, contentWidth, 10, 'F');
+                                    pdf.setFont(undefined, 'bold');
+                                    pdf.text('{{ "After Coupon" if discount > 0 else "Total Price" }}:', margin, yPos);
+                                    pdf.setTextColor(0, 150, 0); // Green text for price
+                                    pdf.text('PKR {{ rounded_price }}', margin + 40, yPos);
+                                    
+                                    // Footer message
+                                    yPos += 20;
+                                    pdf.setTextColor(0, 0, 0); // Back to black
+                                    pdf.setFont(undefined, 'bold');
+                                    pdf.text('IMPORTANT!', margin, yPos);
+                                    pdf.setFont(undefined, 'normal');
+                                    pdf.setFontSize(9);
+                                    yPos += 7;
+                                    pdf.text('Please send a screenshot of your transaction to our WhatsApp number: +92 328 4336247', margin, yPos);
+                                    yPos += 5;
+                                    pdf.text('Your order will NOT be processed until we receive your payment confirmation.', margin, yPos);
+                                    
+                                    // Save the PDF
+                                    pdf.save('TipTop_Receipt_{{ transaction_id }}.pdf');
+                                    
+                                    // Reset button state
+                                    btn.innerHTML = originalText;
+                                    btn.disabled = false;
+                                } catch (error) {
+                                    console.error('PDF generation error:', error);
+                                    alert('Error creating PDF. Trying to capture page instead...');
+                                    
+                                    // Fallback to html2canvas if direct PDF creation fails
+                                    const card = document.querySelector('.card.shadow-sm.border-success');
+                                    
+                                    html2canvas(card, {
+                                        scale: 2,
+                                        useCORS: true,
+                                        allowTaint: true,
+                                        backgroundColor: '#ffffff',
+                                        logging: false,
+                                        letterRendering: true,
+                                        imageTimeout: 0,
+                                    }).then(function(canvas) {
+                                        try {
+                                            // Create a new PDF using the captured image
+                                            const { jsPDF } = window.jspdf;
+                                            const pdf = new jsPDF({
+                                                orientation: 'portrait',
+                                                unit: 'mm',
+                                                format: 'a4',
+                                            });
+                                            
+                                            // Canvas dimensions
+                                            const imgWidth = 210;
+                                            const imgHeight = canvas.height * imgWidth / canvas.width;
+                                            
+                                            // Add image to PDF
+                                            const imgData = canvas.toDataURL('image/jpeg', 1.0);
+                                            pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+                                            
+                                            // Save the PDF
+                                            pdf.save('TipTop_Receipt_{{ transaction_id }}.pdf');
+                                            
+                                            btn.innerHTML = originalText;
+                                            btn.disabled = false;
+                                        } catch (err) {
+                                            console.error('Fallback PDF generation failed:', err);
+                                            alert('PDF generation failed. Please take a screenshot manually.');
+                                            btn.innerHTML = originalText;
+                                            btn.disabled = false;
+                                        }
+                                    }).catch(function(err) {
+                                        console.error('Image capture failed:', err);
+                                        btn.innerHTML = originalText;
+                                        btn.disabled = false;
+                                        alert('Could not generate PDF. Please try again or take a screenshot manually.');
+                                    });
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
